@@ -1,0 +1,11 @@
+If you have any question in reading the below, please feel free to contact me at mqiao@princeton.edu
+
+This is for training znn to recognize myelinated axons. Imageset (in Image_original) was given to tracers for labeling myelinated axons (only axon part). Kyle labeled the left part (in Left folder) while Ben labeled the right part (in Right folder). There are some overlaps between the two parts. 
+
+First, I merged the two parts by running Merge2.ipynb (in ipython notebook). The merged image has value 1 for axons and value 0 for the rest part of the image, and was exported into the folder Label.
+
+Second, I split the Imageset and Labeling into training set (the first 140 slides) and testing set (the last 18 slides). These files are Train_input, Training (labeling); Test_input, Testing (labeling).
+
+Then, I trained a N4 network using znn. Please read more on http://znn-release.readthedocs.org/en/latest/index.html about how to use it. The two important configuration files were saved in this folder: config.cfg and dataset.spec. max iteration was 35000 and training result was saved as figure_1.png.
+
+Finally, I calculated the precision-recall curve, and save the result as precision_recall.png (see precision_recall.ipynb for more details). Using N4 network, the it can be achieved that precision>0.8 and recall>0.8.
